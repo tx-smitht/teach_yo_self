@@ -1,24 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
+import tannerLifting from './img/Screenshot_20230127-075947.png';
 import './App.css';
+import SiteHeader from './Header';
+import MyForm from './prediction_page';
+import { JSXForm } from './prediction_adv';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SiteHeader></SiteHeader>
+
+      <img src={tannerLifting} className="App-logo" alt="logo" />
+      <JSXForm></JSXForm>
+      {/* <MyForm></MyForm> */}
     </div>
   );
 }
