@@ -15,10 +15,10 @@ const lookupTable: LookupTable = {
 export const JSXForm = () => {
   const [Equipment, setEquipment] = useState<string>('');
   const [Sex, setSex] = useState<string>('');
-  const [Age, setAge] = useState<number>(0);
-  const [BodyweightKg, setBodyweightKg] = useState<number>(0);
-  const [Best3SquatKg, setBest3SquatKg] = useState<number>(0);
-  const [Best3DeadliftKg, setBest3DeadliftKg] = useState<number>(0);
+  const [Age, setAge] = useState<number>(NaN);
+  const [BodyweightKg, setBodyweightKg] = useState<number>(NaN);
+  const [Best3SquatKg, setBest3SquatKg] = useState<number>(NaN);
+  const [Best3DeadliftKg, setBest3DeadliftKg] = useState<number>(NaN);
   const [prediction, setPrediction] = useState<string>('');
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -43,9 +43,9 @@ export const JSXForm = () => {
         BodyweightKg: BodyweightKg,
         Best3SquatKg: Best3SquatKg,
         Best3DeadliftKg: Best3DeadliftKg,
+        Sex_M: Sex_M,
         Equipment_Raw: Equipment_Raw,
         Equipment_Wraps: Equipment_Wraps,
-        Sex_M: Sex_M,
       }),
     };
 
@@ -70,6 +70,51 @@ export const JSXForm = () => {
       </h3>
       <form onSubmit={handleSubmit}>
         <label>
+          Sex:<br></br>
+          <select value={Sex} onChange={(e) => setSex(e.target.value)}>
+            <option value="">-- Please select an option --</option>
+            <option value="Sex_M">Male</option>
+            <option value="Sex_F">Female</option>
+          </select>
+        </label>
+        <br></br>
+        <label>
+          Age:<br></br>
+          <input
+            value={Age}
+            type="number"
+            onChange={(e) => setAge(parseInt(e.target.value))}
+          ></input>
+        </label>
+        <br></br>
+        <label>
+          Body Weight in KG:<br></br>
+          <input
+            value={BodyweightKg}
+            type="number"
+            onChange={(e) => setBodyweightKg(parseInt(e.target.value))}
+          ></input>
+        </label>
+        <br></br>
+        <label>
+          Max Squat:<br></br>
+          <input
+            value={Best3SquatKg}
+            type="number"
+            onChange={(e) => setBest3SquatKg(parseInt(e.target.value))}
+          ></input>
+        </label>
+        <br></br>
+        <label>
+          Max Deadlift:<br></br>
+          <input
+            value={Best3DeadliftKg}
+            type="number"
+            onChange={(e) => setBest3DeadliftKg(parseInt(e.target.value))}
+          ></input>
+        </label>
+        <br></br>
+        <label>
           Equipment in use:<br></br>
           <select
             value={Equipment}
@@ -81,16 +126,7 @@ export const JSXForm = () => {
             <option value="Equipment_Other">Other Equipment</option>
           </select>
         </label>
-        <br />
-        <br />
-        <label>
-          Samples Collected:<br></br>
-          <select value={Sex} onChange={(e) => setSex(e.target.value)}>
-            <option value="">-- Please select an option --</option>
-            <option value="samplescollected_true">Yes</option>
-            <option value="samplescollected_false">No</option>
-          </select>
-        </label>
+
         <br />
         <br></br>
         <button className="btn btn-primary" type="submit">
